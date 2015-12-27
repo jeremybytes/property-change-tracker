@@ -13,7 +13,7 @@ namespace TestHelpers.Tests
             var tracker = new PropertyChangeTracker(changer);
 
             changer.LastName = "Jones";
-            var result = tracker.WaitForChange("LastName", 1000);
+            var result = tracker.WaitForChange("LastName", 100);
 
             Assert.IsTrue(result);
         }
@@ -24,7 +24,7 @@ namespace TestHelpers.Tests
             var changer = new FakeClassStandardProperties("John", "Smith");
             var tracker = new PropertyChangeTracker(changer);
 
-            var result = tracker.WaitForChange("LastName", 1000);
+            var result = tracker.WaitForChange("LastName", 100);
 
             Assert.IsFalse(result);
         }
@@ -36,7 +36,7 @@ namespace TestHelpers.Tests
             var tracker = new PropertyChangeTracker(changer);
 
             changer.NotifyAllProperties();
-            var result = tracker.WaitForChange("LastName", 1000);
+            var result = tracker.WaitForChange("LastName", 100);
 
             Assert.IsTrue(result);
         }
