@@ -24,14 +24,13 @@ namespace TestHelpers
             get { return notifications.ToArray(); }
         }
 
-        public bool WaitForChange(string propertyName, int maxWaitSeconds)
+        public bool WaitForChange(string propertyName, int maxWaitMilliseconds)
         {
-            var startTime = DateTime.Now;
+            var startTime = DateTime.UtcNow;
             while (!notifications.Contains(propertyName) &&
                    !notifications.Contains("**ALL**"))
             {
-                var diff = DateTime.Now - startTime;
-                if (diff.TotalSeconds > maxWaitSeconds)
+                if (startTime.AddMilliseconds(maxWaitMilliseconds) < DateTime.UtcNow)
                     return false;
             }
             return true;
