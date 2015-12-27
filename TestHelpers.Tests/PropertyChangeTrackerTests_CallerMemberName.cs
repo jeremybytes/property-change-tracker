@@ -34,10 +34,10 @@ namespace TestHelpers.Tests
             var changer = new FakeClassNameOf("John", "Smith");
             var tracker = new PropertyChangeTracker(changer);
 
-            var result = tracker.WaitForChange("LastName", 1);
             changer.NotifyAllProperties();
+            var result = tracker.WaitForChange("LastName", 1);
 
-            Assert.Inconclusive("Feature not yet implemented");
+            Assert.IsTrue(result);
         }
     }
 }
