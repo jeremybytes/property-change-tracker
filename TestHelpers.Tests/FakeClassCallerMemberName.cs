@@ -15,7 +15,7 @@ namespace TestHelpers.Tests
                 if (firstName == value)
                     return;
                 firstName = value;
-                RaisePropertyChanged(nameof(FirstName));
+                RaisePropertyChanged();
             }
         }
 
@@ -28,7 +28,7 @@ namespace TestHelpers.Tests
                 if (lastName == value)
                     return;
                 lastName = value;
-                RaisePropertyChanged(nameof(LastName));
+                RaisePropertyChanged();
             }
         }
 
@@ -41,7 +41,7 @@ namespace TestHelpers.Tests
                 if (lastUpdateTime == value)
                     return;
                 lastUpdateTime = value;
-                RaisePropertyChanged(nameof(LastUpdateTime));
+                RaisePropertyChanged();
             }
         }
 
