@@ -34,9 +34,9 @@ namespace TestHelpers.Tests
         {
             var changer = new FakeClassStandardProperties("John", "Smith");
             var tracker = new PropertyChangeTracker(changer);
-            var maxWait = new TimeSpan(0, 0, 0, 0, 50);
+            var maxWait = new TimeSpan(0, 0, 0, 0, 60);
 
-            var result = tracker.WaitForChange("LastName", 50);
+            var result = tracker.WaitForChange("LastName", maxWait);
 
             Assert.IsFalse(result);
         }
