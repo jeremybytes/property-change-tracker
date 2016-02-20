@@ -36,6 +36,18 @@ namespace TestHelpers
             return true;
         }
 
+        public bool WaitForChange(string propertyName, TimeSpan maxWait)
+        {
+            var startTime = DateTime.UtcNow;
+            while (!notifications.Contains(propertyName) &&
+                   !notifications.Contains("**ALL**"))
+            {
+                if (startTime + maxWait < DateTime.UtcNow)
+                    return false;
+            }
+            return true;
+        }
+
         public void Reset()
         {
             notifications.Clear();

@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace TestHelpers.Tests
 {
@@ -24,6 +25,18 @@ namespace TestHelpers.Tests
             var tracker = new PropertyChangeTracker(changer);
 
             var result = tracker.WaitForChange("LastName", 100);
+
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void Tracker_CallerMemberNameMaxWaitExpired_ReturnsFalse()
+        {
+            var changer = new FakeClassStandardProperties("John", "Smith");
+            var tracker = new PropertyChangeTracker(changer);
+            var maxWait = new TimeSpan(0, 0, 0, 0, 50);
+
+            var result = tracker.WaitForChange("LastName", 50);
 
             Assert.IsFalse(result);
         }

@@ -30,6 +30,18 @@ namespace TestHelpers.Tests
         }
 
         [TestMethod]
+        public void Tracker_StandardPropertyMaxWaitExpired_ReturnsFalse()
+        {
+            var changer = new FakeClassStandardProperties("John", "Smith");
+            var tracker = new PropertyChangeTracker(changer);
+            var maxWait = new TimeSpan(0, 0, 0, 0, 50);
+
+            var result = tracker.WaitForChange("LastName", 50);
+
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
         public void Tracker_StandardAllPropertiesChanged_ReturnsTrue()
         {
             var changer = new FakeClassStandardProperties("John", "Smith");
