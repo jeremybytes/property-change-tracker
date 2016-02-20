@@ -59,7 +59,7 @@ namespace TestHelpers.Tests
 
         private async void UpdateProperty(int delay, FakePropertiesClass fake)
         {
-            await Task.Delay(delay);
+            await Task.Delay(delay).ConfigureAwait(false);
             fake.LastName = "Jones";
         }
 
