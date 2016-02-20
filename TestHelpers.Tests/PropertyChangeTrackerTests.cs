@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Threading.Tasks;
 
 namespace TestHelpers.Tests
 {
@@ -52,5 +53,39 @@ namespace TestHelpers.Tests
 
             Assert.IsTrue(result);
         }
+
+
+        // Async Tests
+
+        private async void UpdateProperty(int delay, FakePropertiesClass fake)
+        {
+            await Task.Delay(delay);
+            fake.LastName = "Jones";
+        }
+
+        [TestMethod]
+        public void Tracker_SinglePropertyAsyncCompleted_ReturnsTrue()
+        {
+            var changer = new FakePropertiesClass("John", "Smith");
+            var tracker = new PropertyChangeTracker(changer);
+
+            UpdateProperty(50, changer);
+            var result = tracker.WaitForChange("LastName", 100);
+
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void Tracker_SinglePropertyAsyncNotCompleted_ReturnsFalse()
+        {
+            var changer = new FakePropertiesClass("John", "Smith");
+            var tracker = new PropertyChangeTracker(changer);
+
+            UpdateProperty(50, changer);
+            var result = tracker.WaitForChange("LastName", 20);
+
+            Assert.IsFalse(result);
+        }
+
     }
 }
