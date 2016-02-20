@@ -32,7 +32,7 @@ namespace TestHelpers.Tests
         [TestMethod]
         public void Tracker_NameOfMaxWaitExpired_ReturnsFalse()
         {
-            var changer = new FakeClassStandardProperties("John", "Smith");
+            var changer = new FakeClassNameOf("John", "Smith");
             var tracker = new PropertyChangeTracker(changer);
             var maxWait = new TimeSpan(0, 0, 0, 0, 60);
 
