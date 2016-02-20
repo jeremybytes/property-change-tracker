@@ -53,13 +53,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="FakeClassCallerMemberName.cs" />
-    <Compile Include="FakeClassNameOf.cs" />
-    <Compile Include="FakeClassStandardProperties.cs" />
-    <Compile Include="PropertyChangeTrackerTests_StandardProperties.cs" />
+    <Compile Include="FakePropertiesClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PropertyChangeTrackerTests_NameOf.cs" />
-    <Compile Include="PropertyChangeTrackerTests_CallerMemberName.cs" />
+    <Compile Include="PropertyChangeTrackerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TestHelpers\TestHelpers.csproj">

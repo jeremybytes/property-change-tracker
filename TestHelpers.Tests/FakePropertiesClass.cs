@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace TestHelpers.Tests
 {
-    public class FakeClassNameOf : INotifyPropertyChanged
+    public class FakePropertiesClass : INotifyPropertyChanged
     {
         private string firstName;
         public string FirstName
@@ -49,7 +49,7 @@ namespace TestHelpers.Tests
             RaisePropertyChanged();
         }
 
-        public FakeClassNameOf(string firstName, string lastName)
+        public FakePropertiesClass(string firstName, string lastName)
         {
             FirstName = firstName;
             LastName = lastName;

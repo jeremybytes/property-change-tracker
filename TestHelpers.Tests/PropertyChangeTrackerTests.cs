@@ -1,15 +1,15 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TestHelpers.Tests
 {
     [TestClass]
-    public class PropertyChangeTrackerTests_NameOf
+    public class PropertyChangeTrackerTests
     {
         [TestMethod]
-        public void Tracker_NameOfPropertyChanged_ReturnsTrue()
+        public void Tracker_SinglePropertyChanged_ReturnsTrue()
         {
-            var changer = new FakeClassNameOf("John", "Smith");
+            var changer = new FakePropertiesClass("John", "Smith");
             var tracker = new PropertyChangeTracker(changer);
 
             changer.LastName = "Jones";
@@ -19,9 +19,9 @@ namespace TestHelpers.Tests
         }
 
         [TestMethod]
-        public void Tracker_NameOfPropertyNotChanged_ReturnsFalse()
+        public void Tracker_SinglePropertyNotChanged_ReturnsFalse()
         {
-            var changer = new FakeClassNameOf("John", "Smith");
+            var changer = new FakePropertiesClass("John", "Smith");
             var tracker = new PropertyChangeTracker(changer);
 
             var result = tracker.WaitForChange("LastName", 100);
@@ -30,9 +30,9 @@ namespace TestHelpers.Tests
         }
 
         [TestMethod]
-        public void Tracker_NameOfMaxWaitExpired_ReturnsFalse()
+        public void Tracker_MaxWaitExpired_ReturnsFalse()
         {
-            var changer = new FakeClassNameOf("John", "Smith");
+            var changer = new FakePropertiesClass("John", "Smith");
             var tracker = new PropertyChangeTracker(changer);
             var maxWait = new TimeSpan(0, 0, 0, 0, 60);
 
@@ -42,9 +42,9 @@ namespace TestHelpers.Tests
         }
 
         [TestMethod]
-        public void Tracker_NameOfAllPropertiesChanged_ReturnsTrue()
+        public void Tracker_AllPropertiesChanged_ReturnsTrue()
         {
-            var changer = new FakeClassNameOf("John", "Smith");
+            var changer = new FakePropertiesClass("John", "Smith");
             var tracker = new PropertyChangeTracker(changer);
 
             changer.NotifyAllProperties();
