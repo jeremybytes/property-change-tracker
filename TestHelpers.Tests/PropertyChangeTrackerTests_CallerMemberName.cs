@@ -8,7 +8,7 @@ namespace TestHelpers.Tests
         [TestMethod]
         public void Tracker_CallerMemberNamePropertyChanged_ReturnsTrue()
         {
-            var changer = new FakeClassNameOf("John", "Smith");
+            var changer = new FakeClassCallerMemberName("John", "Smith");
             var tracker = new PropertyChangeTracker(changer);
 
             changer.LastName = "Jones";
@@ -20,7 +20,7 @@ namespace TestHelpers.Tests
         [TestMethod]
         public void Tracker_CallerMemberNamePropertyNotChanged_ReturnsFalse()
         {
-            var changer = new FakeClassNameOf("John", "Smith");
+            var changer = new FakeClassCallerMemberName("John", "Smith");
             var tracker = new PropertyChangeTracker(changer);
 
             var result = tracker.WaitForChange("LastName", 100);
@@ -31,7 +31,7 @@ namespace TestHelpers.Tests
         [TestMethod]
         public void Tracker_CallerMemberNameAllPropertiesChanged_ReturnsTrue()
         {
-            var changer = new FakeClassNameOf("John", "Smith");
+            var changer = new FakeClassCallerMemberName("John", "Smith");
             var tracker = new PropertyChangeTracker(changer);
 
             changer.NotifyAllProperties();
